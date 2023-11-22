@@ -1,0 +1,39 @@
+<div class="musics">
+  <span class="title-bg mt-4"> {{ "title-top-artist" | translate }} </span>
+
+  <app-top-artist class="mt-2 d-block"></app-top-artist>
+
+  <span class="title-bg mt-4">
+    {{ "liked-songs" | translate }}
+  </span>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th class="w-5">#</th>
+        <th class="w-35">{{ "title" | translate }}</th>
+        <th class="w-30">{{ "artist" | translate }}</th>
+        <th class="w-10 right">{{ "time" | translate }}</th>
+        <th class="w-20">{{ "album" | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let music of musics"
+        (click)="executeMusic(music)"
+        [class.executing]="music.uri === currentMusic.uri"
+      >
+        <td>
+          <fa-icon class="play" [icon]="playIcon"></fa-icon>
+        </td>
+        <td>{{ music.title }}</td>
+        <td>{{ concatArtistsName(music) }}</td>
+        <td class="right">{{ music.time }}</td>
+        <td>{{ music.album.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-panel-right class="right-panel"></app-panel-right>

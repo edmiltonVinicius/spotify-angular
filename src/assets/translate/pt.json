@@ -1,0 +1,19 @@
+{
+  "button.home": "Abrir meu Spotify",
+  "alt-logo.home": "logo da Spotify",
+  "alt-icon.translate": "Ícone de tradução",
+  "text-translate": "Traduzir para",
+  "title-top-artist": "Seu top Artista",
+  "image-alt-user": "Image user",
+  "playlist": "Playlist",
+  "liked-songs": "Músicas Curtidas",
+  "title": "Título",
+  "artist": "Artista",
+  "album": "Álbum",
+  "time": "Tempo",
+  "placeholder-input-search": "Artista, Músicas, Playlist",
+  "title-top-artists": "Top 5 Artistas",
+  "home": "Início",
+  "search": "Pesquisar",
+  "artists": "Artistas"
+}

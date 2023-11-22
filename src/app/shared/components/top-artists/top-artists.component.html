@@ -1,0 +1,8 @@
+<span class="title-md">{{ "title-top-artists" | translate }}</span>
+
+<app-artist-image
+  *ngFor="let artist of artists"
+  class="d-block"
+  [image]="artist.imageUrl"
+  >{{ artist.name }}</app-artist-image
+>

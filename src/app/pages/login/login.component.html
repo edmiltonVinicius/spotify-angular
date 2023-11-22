@@ -1,0 +1,14 @@
+<div class="base flex flex-center">
+  <div class="icons">
+    <app-switch-translate></app-switch-translate>
+  </div>
+
+  <img
+    src="../../../assets/images/spotify-logo-inicio.png"
+    alt="{{ 'alt-logo.home' | translate }}"
+  />
+
+  <button type="button" (click)="redirectToLogin()">
+    {{ "button.home" | translate }}
+  </button>
+</div>

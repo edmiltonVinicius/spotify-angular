@@ -1,0 +1,13 @@
+<div class="translate flex flex-center">
+  <button type="button" (click)="changeLanguage()">
+    <img
+      src="../../../assets/icons/translate-green-ligth.png"
+      alt="{{ 'alt-icon.translate' | translate }}"
+    />
+  </button>
+
+  <div class="labels">
+    <span>{{ "text-translate" | translate }}</span>
+    <p>{{ commonTranslateService.language }}</p>
+  </div>
+</div>

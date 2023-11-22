@@ -1,0 +1,11 @@
+<div class="list mt-4">
+  <div class="loading" *ngIf="isLoading">
+    <fa-icon [icon]="iconLoading"></fa-icon>
+  </div>
+
+  <app-banner
+    *ngIf="!isLoading"
+    [imageUrl]="bannerImagUrl"
+    [title]="bannerTitle"
+  ></app-banner>
+</div>
