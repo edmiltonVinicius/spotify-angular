@@ -20,6 +20,11 @@ export const routes: Routes = [
     title: 'Player',
     canMatch: [AuthenticationGuard],
   },
+  {
+    path: '**',
+    redirectTo: '/player/home',
+    pathMatch: 'full',
+  },
 ];
 
 export const AppRoutes = RouterModule.forRoot(routes);
