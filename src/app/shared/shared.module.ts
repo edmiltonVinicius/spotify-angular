@@ -8,13 +8,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserFooterComponent } from './components/user-footer/user-footer.component';
 import { TopArtistComponent } from './components/top-artist/top-artist.component';
 import { PanelRightComponent } from './components/panel-right/panel-right.component';
-import { TableLikedSongsComponent } from './components/table-liked-songs/table-liked-songs.component';
 import { RecentSearchesComponent } from './components/recent-searches/recent-searches.component';
 import { FormsModule } from '@angular/forms';
 import { TopArtistsComponent } from './components/top-artists/top-artists.component';
 import { ArtistImageComponent } from './components/artist-image/artist-image.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { TableSongsComponent } from './components/table-songs/table-songs.component';
 
 const components = [
   SwitchTranslateComponent,
@@ -23,12 +23,12 @@ const components = [
   UserFooterComponent,
   TopArtistComponent,
   PanelRightComponent,
-  TableLikedSongsComponent,
   RecentSearchesComponent,
   TopArtistsComponent,
   ArtistImageComponent,
   PlayerCardComponent,
   BannerComponent,
+  TableSongsComponent,
 ];
 
 @NgModule({

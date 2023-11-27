@@ -1,9 +1,12 @@
 <div class="card p-20">
   <div class="artist flex">
     <span class="title-bg">
-      {{ title }}
+      {{ bannerTitle }}
     </span>
   </div>
 
-  <div class="image" [style.background-image]="'url(' + imageUrl + ')'"></div>
+  <div
+    class="image"
+    [style.background-image]="'url(' + bannerImageUrl + ')'"
+  ></div>
 </div>

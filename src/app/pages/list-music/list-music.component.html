@@ -1,11 +1,20 @@
-<div class="list mt-4">
-  <div class="loading" *ngIf="isLoading">
+<div class="list scrollbar-green">
+  <div class="card loading" *ngIf="isLoading">
     <fa-icon [icon]="iconLoading"></fa-icon>
   </div>
 
-  <app-banner
-    *ngIf="!isLoading"
-    [imageUrl]="bannerImagUrl"
-    [title]="bannerTitle"
-  ></app-banner>
+  <ng-container *ngIf="!isLoading">
+    <app-banner
+      [bannerImageUrl]="bannerImagUrl"
+      [bannerTitle]="bannerTitle"
+    ></app-banner>
+
+    <div class="title-bg mt-7">
+      {{ "musics-playlist" | translate }} {{ title }}
+    </div>
+
+    <app-table-songs [listMusics]="musics"></app-table-songs>
+  </ng-container>
 </div>
+
+<app-panel-right class="panel-right"></app-panel-right>

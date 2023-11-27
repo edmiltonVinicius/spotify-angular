@@ -1,5 +1,12 @@
 @import "variables";
 
+.list-empty {
+  font-size: 20px;
+  color: $dark-transparent-40;
+  font-weight: 600;
+  display: block;
+}
+
 .table {
   width: 100%;
   text-align: left;

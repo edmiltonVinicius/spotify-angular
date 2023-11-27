@@ -1,10 +1,11 @@
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faPlay, faTruckLoading } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { IMusic } from 'src/app/interfaces/IMusic';
 import { newMusic } from 'src/app/shared/factories/track.factory';
+import { IPlaylist } from 'src/app/interfaces/IPlaylist';
 
 @Component({
   selector: 'app-list-music',
@@ -21,7 +22,9 @@ export class ListMusicComponent implements OnInit, OnDestroy {
   currentMusic: IMusic = newMusic();
 
   iconPaly = faPlay;
-  iconLoading = faTruckLoading;
+  iconLoading = faSpinner;
+
+  title = '';
 
   subs: Subscription[] = [];
 
@@ -36,13 +39,9 @@ export class ListMusicComponent implements OnInit, OnDestroy {
     this.subs.forEach((sub) => sub.unsubscribe());
   }
 
-  setDataPage(
-    bannerTitle: string,
-    bannerImage: string,
-    musics: IMusic[]
-  ): void {
-    this.bannerTitle = bannerTitle;
-    this.bannerImagUrl = bannerImage;
+  private setDataPage({ name, imageUrl, musics }: Omit<IPlaylist, 'id'>): void {
+    this.bannerTitle = name;
+    this.bannerImagUrl = imageUrl;
     this.musics = musics;
   }
 
@@ -75,12 +74,8 @@ export class ListMusicComponent implements OnInit, OnDestroy {
       playListId
     );
 
-    this.setDataPage(
-      playListMusics.name,
-      playListMusics.imageUrl,
-      playListMusics.musics
-    );
-
+    this.setDataPage(playListMusics);
+    this.title = playListMusics.name;
     this.isLoading = false;
   }
 

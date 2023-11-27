@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class BannerComponent {
   @Input({ required: true })
-  imageUrl = '';
+  bannerImageUrl = '';
 
   @Input({ required: true })
-  title = '';
+  bannerTitle = '';
 }

@@ -15,5 +15,7 @@
   "title-top-artists": "Top 5 Artists",
   "home": "Home",
   "search": "Search",
-  "artists": "Artists"
+  "artists": "Artists",
+  "musics-playlist": "Musics of Playlist:",
+  "list-empty": "List music is empty..."
 }
