@@ -46,12 +46,13 @@ export class SpotifyService {
     }
   }
 
-  async getSpotifyUserData(): Promise<void> {
+  async getSpotifyUserData(): Promise<Error | null> {
     try {
       const userInfo = await this.spotifyApi.getMe();
       this.user = SpotifyUserDataDTO(userInfo);
+      return null;
     } catch (error) {
-      throw new Error('Error to get user data');
+      return new Error('Error to get user data');
     }
   }
 

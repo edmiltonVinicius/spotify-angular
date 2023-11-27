@@ -115,7 +115,10 @@
               "includePaths": [
                 "./src/assets/styles"
               ]
-            }
+            },
+            "include": [
+              "**/*service.spec.ts"
+            ]
           }
         }
       }
