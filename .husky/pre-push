@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Now go run tests in all services...\n"
+ng test --watch=false
+
+echo "\n√ Shooow xD"
+echo "√ Going up!!\n"

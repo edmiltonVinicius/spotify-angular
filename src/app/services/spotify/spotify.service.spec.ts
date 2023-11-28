@@ -30,8 +30,10 @@ describe('SpotifyService', () => {
     it('should call SpotifyUserDataDTO with value returned by spotify.getMe method', () => {});
 
     it('should throw error when spotify.getMe method throw error', async () => {
-      spyOn(spotifyApiMok, 'getMe').and.throwError('Error to get user data');
-      expect(await service.getSpotifyUserData()).toThrowError();
+      spyOn(spotifyApiMok, 'getMe').and.rejectWith(new Error());
+      expect(await service.getSpotifyUserData()).toEqual(
+        new Error('Error to get user data')
+      );
     });
   });
 
