@@ -1,8 +1,6 @@
 name: CI-CD-Azure
 
 on:
-  push:
-    branches: ["main"]
   pull_request:
     types:
       - closed
@@ -11,7 +9,7 @@ on:
 
 jobs:
   CI:
-    if: github.event.pull_request.merged == true || github.event.action == 'push'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - run: echo "teste 132"
