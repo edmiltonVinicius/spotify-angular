@@ -12,4 +12,20 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - run: echo "teste 132"
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Docker Login - Dockerhub
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PWD }}
+      - name: Build and push Docker 
+        uses: docker/build-push-action@v5.1.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:v1
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest         
+      
