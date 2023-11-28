@@ -11,7 +11,7 @@ on:
 
 jobs:
   CI:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event.action == 'push'
     runs-on: ubuntu-latest
     steps:
       - run: echo "teste"
