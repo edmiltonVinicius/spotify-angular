@@ -26,5 +26,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:v1
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:${{ github.run_number }}
             ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest
