@@ -13,6 +13,7 @@ import { IPlaylist } from '../../interfaces/IPlaylist';
 import { Router } from '@angular/router';
 import { IArtist } from 'src/app/interfaces/IArtist';
 import { IMusic } from 'src/app/interfaces/IMusic';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class SpotifyService {
   user: IUser;
 
   private router = inject(Router);
+  private http = inject(HttpClient);
 
   constructor() {
     this.spotifyApi = new Spotify();
@@ -139,6 +141,21 @@ export class SpotifyService {
 
   async nextMusic(): Promise<void> {
     await this.spotifyApi.skipToNext();
+  }
+
+  async searchItemByName(name: string, offset = 0, limit = 5) {
+    try {
+      const result = await this.spotifyApi.search(name, ['album', 'artist'], {
+        limit,
+        offset,
+      });
+
+      console.log('result: ', result);
+      return name;
+    } catch (error) {
+      console.log('Error searchItemByName: ', error);
+      return null;
+    }
   }
 
   logout(): void {

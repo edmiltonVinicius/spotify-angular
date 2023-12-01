@@ -11,9 +11,9 @@
     font-size: 1rem;
     font-weight: 500;
 
-    &placeholder {
-      color: $dark-transparent-30;
-      font-size: 0.85rem;
+    &::placeholder {
+      color: $dark-transparent-40;
+      font-size: 0.9rem;
     }
 
     &:focus,

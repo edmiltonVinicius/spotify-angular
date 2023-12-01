@@ -1,25 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  startWith,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 
 @Component({
   selector: 'app-recent-searches',
   templateUrl: './recent-searches.component.html',
   styleUrls: ['./recent-searches.component.scss'],
 })
-export class RecentSearchesComponent {
-  searchText = '';
-  recentSearches = [
-    'Top Brasil',
-    'Top Global',
-    'Esquenta Sertanejo',
-    'Funk Hits',
-    'Pagodeira',
-  ];
+export class RecentSearchesComponent implements OnInit {
+  recentSearches: string[];
+  inputSearch = new FormControl('');
 
-  setSearch(search: string): void {
-    this.searchText = search;
+  private spotifyService = inject(SpotifyService);
+
+  ngOnInit(): void {
+    this.onSearch();
   }
 
-  search(): void {
-    console.log('Buscando....', this.searchText);
+  onSearch() {
+    this.inputSearch.valueChanges
+      .pipe(
+        map((value) => value.trim()),
+        filter((value) => value.length > 3),
+        debounceTime(300),
+        distinctUntilChanged(),
+        tap((value) => console.log(value)),
+        switchMap((value) => this.spotifyService.searchItemByName(value)),
+        catchError((error, source) => {
+          return source.pipe(startWith(''));
+        })
+      )
+      .subscribe({
+        next: (result: string | null) => console.log('onSearch: ', result),
+        error: (error) => console.log('error: ', error),
+      });
+  }
+
+  setSearch(item: any): void {
+    console.log('Buscando: ', item);
   }
 }
