@@ -11,7 +11,7 @@ on:
 
 jobs:
   Build_and_Test:
-    if: github.event.pull_request.merged != false
+    if: github.event.pull_request.merged != false || true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
