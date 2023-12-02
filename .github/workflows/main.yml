@@ -5,6 +5,8 @@ on:
     types:
       - opened
       - closed
+      - reopened
+      - edited
     branches: ["main"]
 
 jobs:
