@@ -10,11 +10,9 @@ on:
 
 jobs:
   Build_and_Test:
-    if: ${{ github.event.pull_request.state == 'opened' || github.event.pull_request.merged == false }}
+    if: ${{ github.event.pull_request.state == 'opened' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
-      - name: TEST
-        run: echo ${{ github.event_name }} ' - ' ${{ github.event.pull_request.state }} ' - ' ${{ github.event.pull_request.merged }}
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Setup Node.js environment
