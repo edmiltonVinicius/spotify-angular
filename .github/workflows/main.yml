@@ -11,6 +11,7 @@ on:
 
 jobs:
   Build_and_Test:
+    if: github.event.pull_request.merged != false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +25,7 @@ jobs:
       - name: Angular Build
         run: npm run build
       - name: Run Tests
-        run: ng test --watch=false --browsers=ChromeHeadlessCustom
+        run: npm run test --watch=false --browsers=ChromeHeadlessCustom
 
   CI:
     if: github.event.pull_request.merged == true
