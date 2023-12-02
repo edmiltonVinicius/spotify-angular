@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log
-        run: ${{ github.event.pull_request.state }} ' - ' ${{ github.action }} ' - ' ${{ github.action_status }} ' - ' ${{ github.event_name }}
+        run: ${{ github.event.pull_request.state }} ' - ' ${{ github.event.pull_request.merged }} ' - ' ${{ github.event_name }}
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Setup Node.js environment
