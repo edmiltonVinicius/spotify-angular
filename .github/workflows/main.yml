@@ -22,7 +22,7 @@ jobs:
       - name: Angular Build
         run: npm run build
       - name: Run Tests
-        run: npm run test --watch=false --browsers=ChromeHeadless
+        run: ng test --watch=false --browsers=ChromeHeadlessCustom
 
   CI:
     if: github.event.pull_request.merged == true
