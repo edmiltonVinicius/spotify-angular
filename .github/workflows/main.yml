@@ -41,10 +41,8 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          cache-to: type=local,dest=/cache
           tags: |
             ${{ secrets.DOCKERHUB_USER }}/angular-spotify:${{ github.run_number }}
-            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest
 
       - name: Scann Trivy
         uses: aquasecurity/trivy-action@0.14.0
@@ -63,6 +61,8 @@ jobs:
       - name: Push Image Docker
         uses: docker/build-push-action@v5.1.0
         with:
-          cache-from: |
-            cache-to: type=local,src=/cache
+          context: .
+          file: ./Dockerfile
           push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest
