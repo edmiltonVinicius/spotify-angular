@@ -10,7 +10,7 @@ on:
 
 jobs:
   Build_and_Test:
-    if: ${{ github.event.pull_request.state == 'opened' || github.event.pull_request.merged == true }}
+    if: ${{ github.event.pull_request.state == 'opened' || github.event.pull_request.state == 'reopened' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
