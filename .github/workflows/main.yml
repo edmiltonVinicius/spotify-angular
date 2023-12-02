@@ -35,17 +35,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
+
+      - name: Build Docker
+        uses: docker/build-push-action@v5.1.0
+        with:
+          context: .
+          file: ./Dockerfile
+          cache-to: type=local,dest=/cache
+          tags: |
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest
+
+      - name: Scann Trivy
+        uses: aquasecurity/trivy-action@0.14.0
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USER }}/angular-spotify:${{ github.run_number }}
+          exit-code: 1
+          ignore-unfixed: true
+          severity: HIGH,CRITICAL
+
       - name: Docker Login - Dockerhub
         uses: docker/login-action@v3.0.0
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
-      - name: Build and push Docker
+
+      - name: Push Image Docker
         uses: docker/build-push-action@v5.1.0
         with:
-          context: .
-          file: ./Dockerfile
+          cache-from: |
+            cache-to: type=local,src=/cache
           push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:${{ github.run_number }}
-            ${{ secrets.DOCKERHUB_USER }}/angular-spotify:latest
