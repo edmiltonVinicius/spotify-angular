@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   catchError,
   debounceTime,
@@ -8,8 +9,8 @@ import {
   map,
   startWith,
   switchMap,
-  tap,
 } from 'rxjs';
+import { IPlaylistShort } from 'src/app/interfaces/IPlaylist';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 
 @Component({
@@ -18,10 +19,12 @@ import { SpotifyService } from 'src/app/services/spotify/spotify.service';
   styleUrls: ['./recent-searches.component.scss'],
 })
 export class RecentSearchesComponent implements OnInit {
-  recentSearches: string[];
+  recentSearches: IPlaylistShort[];
   inputSearch = new FormControl('');
+  noResults = false;
 
   private spotifyService = inject(SpotifyService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.onSearch();
@@ -30,23 +33,29 @@ export class RecentSearchesComponent implements OnInit {
   onSearch() {
     this.inputSearch.valueChanges
       .pipe(
-        map((value) => value.trim()),
-        filter((value) => value.length > 3),
+        map((name) => name.trim()),
+        filter((name) => name.length > 3),
         debounceTime(300),
         distinctUntilChanged(),
-        tap((value) => console.log(value)),
-        switchMap((value) => this.spotifyService.searchItemByName(value)),
+        switchMap((name) => this.spotifyService.searchPlaylistByName(name)),
         catchError((error, source) => {
-          return source.pipe(startWith(''));
+          return source.pipe(startWith([]));
         })
       )
       .subscribe({
-        next: (result: string | null) => console.log('onSearch: ', result),
-        error: (error) => console.log('error: ', error),
+        next: (results: IPlaylistShort[]) => {
+          if (!results.length) {
+            this.noResults = true;
+            return;
+          }
+
+          this.recentSearches = results;
+          this.noResults = false;
+        },
       });
   }
 
-  setSearch(item: any): void {
-    console.log('Buscando: ', item);
+  setSearch(item: IPlaylistShort): void {
+    this.router.navigate([`player/list/playlist/${item.id}`]);
   }
 }

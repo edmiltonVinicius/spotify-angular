@@ -17,5 +17,6 @@
   "search": "Pesquisar",
   "artists": "Artistas",
   "musics-playlist": "Músicas da Playlist:",
-  "list-empty": "Lista de música está vazia..."
+  "list-empty": "Lista de música está vazia...",
+  "no-results-search": "Nenhuma Playlist foi encontrada x("
 }

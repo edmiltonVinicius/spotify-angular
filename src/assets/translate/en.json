@@ -17,5 +17,6 @@
   "search": "Search",
   "artists": "Artists",
   "musics-playlist": "Musics of Playlist:",
-  "list-empty": "List music is empty..."
+  "list-empty": "List music is empty...",
+  "no-results-search": "No Playlist founded x("
 }

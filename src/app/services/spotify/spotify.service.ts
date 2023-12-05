@@ -9,7 +9,7 @@ import {
   SpotifyTrackDataDTO,
   SpotifyUserDataDTO,
 } from '../../shared/helpers/spotify.helper';
-import { IPlaylist } from '../../interfaces/IPlaylist';
+import { IPlaylist, IPlaylistShort } from '../../interfaces/IPlaylist';
 import { Router } from '@angular/router';
 import { IArtist } from 'src/app/interfaces/IArtist';
 import { IMusic } from 'src/app/interfaces/IMusic';
@@ -143,18 +143,27 @@ export class SpotifyService {
     await this.spotifyApi.skipToNext();
   }
 
-  async searchItemByName(name: string, offset = 0, limit = 5) {
+  async searchPlaylistByName(
+    name: string,
+    offset = 0,
+    limit = 5
+  ): Promise<IPlaylistShort[]> {
     try {
-      const result = await this.spotifyApi.search(name, ['album', 'artist'], {
+      const resultSearch = await this.spotifyApi.search(name, ['playlist'], {
         limit,
         offset,
       });
 
-      console.log('result: ', result);
-      return name;
+      if (!resultSearch.playlists.items.length) return [];
+
+      const playlists = resultSearch.playlists.items.map((artist) => ({
+        id: artist.id,
+        name: artist.name,
+      }));
+
+      return playlists;
     } catch (error) {
-      console.log('Error searchItemByName: ', error);
-      return null;
+      return [];
     }
   }
 

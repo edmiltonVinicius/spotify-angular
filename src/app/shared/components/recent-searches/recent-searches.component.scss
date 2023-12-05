@@ -25,22 +25,40 @@
 
   .suggestions {
     flex-wrap: wrap;
+    max-height: 20vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-top: 8px;
 
-    span {
+    &-item {
       background-color: $bg-white;
       margin-right: 5px;
       padding: 5px 10px;
       color: $dark-transparent-70;
       border: 1px solid $dark-transparent-30;
-      margin-top: 10px;
       font-size: 0.9rem;
       border-radius: 20px;
       cursor: pointer;
+      word-break: break-word;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
 
       &:hover {
         background-color: rgba($color-primary, 0.8);
         color: white;
       }
     }
+  }
+
+  .no-results {
+    display: block;
+    padding-left: 8px;
+    margin-top: 8px;
+    font-weight: 600;
+    color: $dark-transparent-30;
+    font-size: 13px;
   }
 }

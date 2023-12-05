@@ -4,8 +4,16 @@
   [formControl]="inputSearch"
 />
 
-<div class="suggestions flex">
-  <span *ngFor="let search of recentSearches" (click)="setSearch(search)">
-    {{ search }}
+<div class="suggestions flex scrollbar-green">
+  <span
+    class="suggestions-item"
+    *ngFor="let search of recentSearches"
+    (click)="setSearch(search)"
+  >
+    {{ search.name }}
   </span>
+
+  <span class="no-results" *ngIf="noResults">{{
+    "no-results-search" | translate
+  }}</span>
 </div>
