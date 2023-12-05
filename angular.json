@@ -118,7 +118,8 @@
             },
             "include": [
               "**/*service.spec.ts"
-            ]
+            ],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }
