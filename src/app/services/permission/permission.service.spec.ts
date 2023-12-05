@@ -5,6 +5,7 @@ import { routes } from 'src/app/app.routes';
 import { Router } from '@angular/router';
 import { sleep } from 'src/app/shared/helpers/utils';
 import { SpotifyService } from '../spotify/spotify.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PermissionService', () => {
   let service: PermissionService;
@@ -13,7 +14,7 @@ describe('PermissionService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterTestingModule.withRoutes(routes), HttpClientModule],
       teardown: { destroyAfterEach: false },
     });
 
