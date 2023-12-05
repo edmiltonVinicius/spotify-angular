@@ -11,11 +11,12 @@
   "artist": "Artista",
   "album": "Álbum",
   "time": "Tempo",
-  "placeholder-input-search": "Artista, Músicas, Playlist",
+  "placeholder-input-search": "Artista, Músicas",
   "title-top-artists": "Top 5 Artistas",
   "home": "Início",
   "search": "Pesquisar",
   "artists": "Artistas",
   "musics-playlist": "Músicas da Playlist:",
-  "list-empty": "Lista de música está vazia..."
+  "list-empty": "Lista de música está vazia...",
+  "no-results-search": "Nenhuma Playlist foi encontrada x("
 }

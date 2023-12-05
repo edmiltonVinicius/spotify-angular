@@ -6,3 +6,8 @@ export interface IPlaylist {
   imageUrl: string;
   musics?: IMusic[];
 }
+
+export interface IPlaylistShort {
+  id: string;
+  name: string;
+}

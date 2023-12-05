@@ -9,10 +9,11 @@ import {
   SpotifyTrackDataDTO,
   SpotifyUserDataDTO,
 } from '../../shared/helpers/spotify.helper';
-import { IPlaylist } from '../../interfaces/IPlaylist';
+import { IPlaylist, IPlaylistShort } from '../../interfaces/IPlaylist';
 import { Router } from '@angular/router';
 import { IArtist } from 'src/app/interfaces/IArtist';
 import { IMusic } from 'src/app/interfaces/IMusic';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class SpotifyService {
   user: IUser;
 
   private router = inject(Router);
+  private http = inject(HttpClient);
 
   constructor() {
     this.spotifyApi = new Spotify();
@@ -139,6 +141,30 @@ export class SpotifyService {
 
   async nextMusic(): Promise<void> {
     await this.spotifyApi.skipToNext();
+  }
+
+  async searchPlaylistByName(
+    name: string,
+    offset = 0,
+    limit = 5
+  ): Promise<IPlaylistShort[]> {
+    try {
+      const resultSearch = await this.spotifyApi.search(name, ['playlist'], {
+        limit,
+        offset,
+      });
+
+      if (!resultSearch.playlists.items.length) return [];
+
+      const playlists = resultSearch.playlists.items.map((artist) => ({
+        id: artist.id,
+        name: artist.name,
+      }));
+
+      return playlists;
+    } catch (error) {
+      return [];
+    }
   }
 
   logout(): void {

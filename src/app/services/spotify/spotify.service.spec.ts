@@ -1,13 +1,16 @@
 import Spotify from 'spotify-web-api-js';
 import { TestBed } from '@angular/core/testing';
 import { SpotifyService } from './spotify.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('SpotifyService', () => {
   let service: SpotifyService;
   let spotifyApiMok: Spotify.SpotifyWebApiJs;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+    });
     service = TestBed.inject(SpotifyService);
     spotifyApiMok = new Spotify();
   });

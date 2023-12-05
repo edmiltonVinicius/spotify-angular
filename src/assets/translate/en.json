@@ -11,11 +11,12 @@
   "artist": "Artist",
   "album": "Album",
   "time": "Time",
-  "placeholder-input-search": "Artist, Musics, Playlist",
+  "placeholder-input-search": "Artist, Musics",
   "title-top-artists": "Top 5 Artists",
   "home": "Home",
   "search": "Search",
   "artists": "Artists",
   "musics-playlist": "Musics of Playlist:",
-  "list-empty": "List music is empty..."
+  "list-empty": "List music is empty...",
+  "no-results-search": "No Playlist founded x("
 }
