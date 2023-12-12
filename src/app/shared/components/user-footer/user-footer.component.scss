@@ -1,6 +1,6 @@
 @import "variables";
 
-div {
+.flex {
   padding: 5px 30px;
   justify-content: space-between;
   align-items: center;
@@ -8,12 +8,14 @@ div {
   width: 100%;
   color: $color-primary;
   border-top: 1px solid $dark-transparent-20;
+  position: relative;
 
   img {
     flex-grow: 0;
     width: 40px;
     height: auto;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   span {
@@ -30,5 +32,90 @@ div {
     flex-grow: 0;
     cursor: pointer;
     margin-left: 8px;
+  }
+
+  .tooltip-settings {
+    position: fixed;
+    z-index: 9;
+    bottom: 62px;
+    left: 20px;
+    width: 290px;
+    background: #f2f1f1;
+    box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 0 5px 5px 0;
+    padding: 16px;
+
+    &::before {
+      content: "";
+      width: 15px;
+      position: absolute;
+      bottom: -18px;
+      left: 20px;
+      border-left: 7px solid #f2f1f1;
+      border-top: 7px solid transparent;
+      border-bottom: 8px solid transparent;
+      transform: rotate(90deg);
+    }
+
+    > div {
+      width: 80%;
+      margin-bottom: 12px;
+    }
+
+    .top {
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      p {
+        font-size: 15px;
+        margin: 0;
+        font-weight: 500;
+        color: #4c4c4c;
+      }
+
+      .icon-close {
+        cursor: pointer;
+        color: #9fa4a5;
+      }
+    }
+
+    .language {
+      border-bottom: 1px solid #d7d3d3;
+      padding-bottom: 12px;
+    }
+
+    ::ng-deep {
+      .translate {
+        width: max-content;
+
+        button {
+          padding-left: 0;
+
+          img {
+            width: 16px;
+          }
+        }
+
+        .labels {
+          flex-direction: row;
+          align-items: center;
+          margin-left: 0px;
+
+          span,
+          p {
+            color: $dark-transparent-70;
+            font-size: 13px;
+          }
+
+          p {
+            padding: 0;
+            margin-left: 3px;
+          }
+        }
+      }
+    }
   }
 }

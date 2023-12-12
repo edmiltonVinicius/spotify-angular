@@ -1,11 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  faGuitar,
-  faHome,
-  faMusic,
-  faSearch,
-} from '@fortawesome/free-solid-svg-icons';
+import { faGuitar, faHome, faMusic } from '@fortawesome/free-solid-svg-icons';
 import { IPlaylist } from 'src/app/interfaces/IPlaylist';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 
@@ -18,7 +13,6 @@ export class SidebarComponent implements OnInit {
   menuSelected = 'home';
 
   iconHome = faHome;
-  iconSearch = faSearch;
   iconGuitar = faGuitar;
   iconMusic = faMusic;
 

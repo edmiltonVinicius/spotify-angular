@@ -1,8 +1,25 @@
 <div class="flex">
   <img
     [src]="user.imageUrl"
-    alt="{{ 'image-alt-user' | translate }} {{ user.name }}"
+    alt="{{ 'alt.image-alt-user' | translate }} {{ user.name }}"
+    (click)="toggleTooltipSettings()"
   />
+
+  <div class="tooltip-settings" *ngIf="showSettings">
+    <div class="top">
+      <p>{{ "settings" | translate }}</p>
+      <fa-icon
+        [icon]="closeIcon"
+        class="icon-close"
+        size="lg"
+        (click)="toggleTooltipSettings()"
+      ></fa-icon>
+    </div>
+
+    <div class="language">
+      <app-switch-translate></app-switch-translate>
+    </div>
+  </div>
 
   <span> {{ user.name }} </span>
 
