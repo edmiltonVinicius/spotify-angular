@@ -2,7 +2,7 @@
   <div class="image-container flex flex-center">
     <img
       src="assets/images/spotify-logo.png"
-      alt="{{ 'alt-logo.home' | translate }}"
+      alt="{{ 'alt.logo-home' | translate }}"
     />
   </div>
 
@@ -13,14 +13,6 @@
       (click)="onClickMenu('home')"
       ><fa-icon [icon]="iconHome"></fa-icon
     ></app-button-menu>
-
-    <app-button-menu
-      description="{{ 'search' | translate }}"
-      [isSelected]="checkIfMenuIsSelected('search')"
-      (click)="onClickMenu('search')"
-    >
-      <fa-icon [icon]="iconSearch"></fa-icon>
-    </app-button-menu>
 
     <app-button-menu
       description="{{ 'artists' | translate }}"
