@@ -5,7 +5,7 @@ export const environment = {
 export const SpotifyConfiguration = {
   clientId: 'ac5b6ebd360f443baa87d38fad4c9b65',
   authURL: 'https://accounts.spotify.com/authorize',
-  redirectURL: 'http://localhost:4200/login/',
+  redirectURL: 'https://edmilton-spotify.netlify.app/',
   scopes: [
     'user-read-currently-playing',
     'user-read-playback-state',
