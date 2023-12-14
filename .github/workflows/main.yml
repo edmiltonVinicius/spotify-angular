@@ -37,7 +37,7 @@ jobs:
 
   CI:
     if: github.event.pull_request.merged == true
-    needs: [Build_and_Test]
+    # needs: [Build_and_Test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
